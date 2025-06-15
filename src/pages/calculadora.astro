@@ -1,0 +1,97 @@
+---
+import "../styles/global.css";
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculadora Realista</title>
+
+<script defer>
+  document.addEventListener('DOMContentLoaded', () => {
+    const pantalla = document.getElementById("pantalla");
+
+    function agregar(valor) {
+      if (pantalla.textContent === "0") {
+        pantalla.textContent = valor;
+      } else {
+        pantalla.textContent += valor;
+      }
+    }
+
+    function limpiar() {
+      pantalla.textContent = "0";
+    }
+
+    function calcular() {
+      try {
+        pantalla.textContent = eval(pantalla.textContent);
+      } catch {
+        pantalla.textContent = "Error";
+      }
+    }
+
+    // Hacer que los botones funcionen
+    window.agregar = agregar;
+    window.limpiar = limpiar;
+    window.calcular = calcular;
+  });
+</script>
+
+
+  </head>
+  <body>
+    <div class="fondo">
+      <div class="calculadora-real">
+        <div class="pantalla" id="pantalla">0</div>
+        <div class="teclado">
+          <button onclick="limpiar()">C</button>
+          <button onclick="agregar('/')">÷</button>
+          <button onclick="agregar('*')">×</button>
+          <button onclick="agregar('-')">−</button>
+
+          <button onclick="agregar('7')">7</button>
+          <button onclick="agregar('8')">8</button>
+          <button onclick="agregar('9')">9</button>
+          <button onclick="agregar('+')">+</button>
+
+          <button onclick="agregar('4')">4</button>
+          <button onclick="agregar('5')">5</button>
+          <button onclick="agregar('6')">6</button>
+          <button onclick="calcular()">=</button>
+
+          <button onclick="agregar('1')">1</button>
+          <button onclick="agregar('2')">2</button>
+          <button onclick="agregar('3')">3</button>
+          <div></div>
+
+          <button onclick="agregar('0')" class="cero">0</button>
+          <button onclick="agregar('.')">.</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let pantalla = document.getElementById("pantalla");
+
+      function agregar(valor) {
+        if (pantalla.textContent === "0") {
+          pantalla.textContent = valor;
+        } else {
+          pantalla.textContent += valor;
+        }
+      }
+
+      function limpiar() {
+        pantalla.textContent = "0";
+      }
+
+      function calcular() {
+        try {
+          pantalla.textContent = eval(pantalla.textContent);
+        } catch {
+          pantalla.textContent = "Error";
+        }
+      }
+    </script>
+  </body>
+</html>
