@@ -1,26 +1,61 @@
 ---
-import { getCollection } from 'astro:content';
-
-const posts = await getCollection('blog');
 ---
-
 <html lang="es">
   <head>
+    <meta charset="UTF-8" />
     <title>Blog de Ladybug</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        background: #f5f5f5;
+      }
+      h1 {
+        color: #c2185b;
+      }
+      .post {
+        background: white;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      }
+      .post img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+      .post a {
+        text-decoration: none;
+        color: #333;
+      }
+    </style>
   </head>
   <body>
     <h1>📝 Blog de Ladybug</h1>
-    <p>Explorando el mundo de Marinette, los kwamis y sus aventuras.</p>
+    <p>Explora el mundo de Marinette, los Kwamis y sus enemigos.</p>
 
-    <ul>
-      {posts.map((post) => (
-        <li>
-          <a href={`/blog/${post.slug}`}>
-            <h2>{post.data.title}</h2>
-            <p>{post.data.description}</p>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class="post">
+      <a href="/blog/origen">
+        <img src="/ladybug-origen.jpg" alt="Ladybug origen" />
+        <h2>El origen de Ladybug</h2>
+        <p>Descubre cómo surgió la heroína parisina Ladybug.</p>
+      </a>
+    </div>
+
+    <div class="post">
+      <a href="/blog/kwamis">
+        <img src="/kwamis.jpg" alt="Kwamis" />
+        <h2>Kwamis y sus poderes</h2>
+        <p>Conoce a los pequeños seres mágicos que otorgan poderes.</p>
+      </a>
+    </div>
+
+    <div class="post">
+      <a href="/blog/villanos">
+        <img src="/villanos.jpg" alt="Villanos" />
+        <h2>Los villanos en Miraculous</h2>
+        <p>Los enemigos más peligrosos que enfrentan Ladybug y Chat Noir.</p>
+      </a>
+    </div>
   </body>
 </html>
